@@ -1,0 +1,7 @@
+{
+  "name": "WorkHub",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
