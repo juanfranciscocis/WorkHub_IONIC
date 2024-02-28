@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'WorkHub',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    url:'http://localhost:4200',
   }
 };
 
