@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="center_toolbar">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img
+    src="/assets/global/BizSwapLogo.png"
+    class="ion-text-center ion-margin ion-padding"
+  ></ion-img>
+  <ion-card color="orange" >
+    <ion-card-header class="ion-text-center white-text">
+      <ion-card-title class="white-text">Register</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Add an username input -->
+      <ion-label class="ion-text-start white-text">Name or Company</ion-label>
+      <ion-item class="ion-border-radius" color="yellow">
+        <ion-input type="email" class="" required></ion-input>
+      </ion-item>
+      <br>
+      <!-- Add an email input -->
+      <ion-label class="ion-text-start white-text">Email</ion-label>
+      <ion-item class="ion-border-radius" color="yellow">
+        <ion-input type="email" class="" required></ion-input>
+      </ion-item>
+      <br>
+      <!-- Add a password input -->
+      <ion-label class="ion-text-start white-text">Password</ion-label>
+      <ion-item class=" ion-border-radius" color="yellow">
+        <ion-input type="password" required></ion-input>
+      </ion-item>
+      <br>
+      <ion-toggle color="yellow"><ion-label class="white-text">Are you a company?</ion-label></ion-toggle>
+    </ion-card-content>
+    <ion-button expand="block" color="yellow" class="ion-margin" [routerLink]="['/home']">
+      <ion-label class="white-text">Register</ion-label>
+    </ion-button>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button color="yellow" fill="clear" [routerLink]="['/login']">
+          <ion-label class="">Login</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
