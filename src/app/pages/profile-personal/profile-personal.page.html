@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col size="12">
+        <ion-card color="yellow">
+          <ion-card-header class="ion-text-center ion-justify-content-center ion-align-items-center">
+            <ion-avatar>
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <br>
+            <ion-card-title>Pedro Vera</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-input placeholder="Email"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <!-- Button to save changes -->
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col size="12">
+        <ion-button class="ion-margin" expand="block" color="orange" >Save Changes</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <!-- Button to logout -->
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col size="12">
+        <ion-button class="ion-margin" expand="block" color="danger" [routerLink]="['/login']">Logout</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Debug button go to profile -->
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col size="12">
+        <ion-button class="ion-margin" expand="block" color="primary" [routerLink]="['/profile']">Debug Button (Go to Company Profile)</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<app-barfooter></app-barfooter>

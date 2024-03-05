@@ -8,11 +8,14 @@
     </ion-card-header>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-content>
-      <ion-input placeholder="Description of the service"></ion-input>
+        <ion-textarea placeholder="Add a description here"></ion-textarea>
     </ion-card-content>
   </ion-card>
   <!-- save button -->
-  <ion-button class="ion-margin" color="orange" expand="block">Save</ion-button>
+  <ion-button class="ion-margin" color="orange" expand="block">Publish</ion-button>
+
+  <!-- Button to logout -->
+  <ion-button class="ion-margin" expand="block" color="danger" [routerLink]="['/login']">Logout</ion-button>
 
 </ion-content>
 
