@@ -2,14 +2,13 @@
 
 <ion-content [fullscreen]="true">
   <ion-card color="yellow" *ngFor="let item of items" [routerLink]="['/prod-description']">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <img src= {{item.image}}/>
     <ion-card-header>
       <ion-card-title>{{item.name}}</ion-card-title>
       <ion-card-subtitle>$ {{item.price}}</ion-card-subtitle>
     </ion-card-header>
-
     <ion-card-content>
-      Somos una empresa que conecta empresas con personas.
+      {{item.description}}
     </ion-card-content>
   </ion-card>
 
