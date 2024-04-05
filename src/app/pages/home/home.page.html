@@ -1,10 +1,10 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card color="yellow" *ngFor="let item of items" [routerLink]="['/prod-description']">
+  <ion-card color="yellow" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
     <img src= {{item.image}}/>
-    <ion-card-header>
-      <ion-card-title>{{item.name}}</ion-card-title>
+    <ion-card-header >
+      <ion-card-title>{{item.companyName}}</ion-card-title>
       <ion-card-subtitle>$ {{item.price}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>

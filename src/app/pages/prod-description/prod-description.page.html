@@ -1,20 +1,20 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card color="yellow">
+  <ion-card color="yellow" >
     <ion-card-header>
-      <ion-card-title>Adriana Hoyos Design Studio</ion-card-title>
-      <ion-card-subtitle>$1000</ion-card-subtitle>
+      <ion-card-title>{{item?.companyName}}</ion-card-title>
+      <ion-card-subtitle>{{item?.price}}</ion-card-subtitle>
     </ion-card-header>
 
-    <img src="https://www.clave.com.ec/wp-content/uploads/2023/08/logo.png" />
+    <img src="{{item?.image}}" alt="image" class="img-card">
 
     <ion-card-content>
-      Empresa de Diseño de Interiores. Ofrecemos diseños residenciales, comerciales, turisticos y de hoteles y diseños aeroportuarios.
+      {{item?.description}}
     </ion-card-content>
 
     <ion-card-content class="ion-text-center  ion-justify-content-center ion-align-items-center">
-      <ion-button color="orange" fill="clear"><ion-label>Contact Us</ion-label> &nbsp;&nbsp; <ion-icon class="big-icon" name="mail"></ion-icon></ion-button>
+      <ion-button color="orange" fill="clear"><ion-label>0{{item?.contact}}</ion-label> &nbsp;&nbsp; <ion-icon class="big-icon" name="mail"></ion-icon></ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
