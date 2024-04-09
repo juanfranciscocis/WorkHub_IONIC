@@ -5,3 +5,11 @@ export interface Business {
   description: string;
   contact: number;
 }
+
+
+export interface User {
+  companyName: string;
+  email: string;
+  password: string;
+  isCompany: boolean;
+}
