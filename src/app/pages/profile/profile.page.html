@@ -11,11 +11,17 @@
         <ion-textarea placeholder="Add a description here"></ion-textarea>
     </ion-card-content>
   </ion-card>
+
+  <app-products [products]="products"></app-products>
+
+  <!-- Add Product button -->
+  <ion-button class="ion-margin" color="primary" expand="block" (click)="presentAlert()">Add Product</ion-button>
+
   <!-- save button -->
   <ion-button class="ion-margin" color="orange" expand="block">Publish</ion-button>
 
   <!-- Button to logout -->
-  <ion-button class="ion-margin" expand="block" color="danger" [routerLink]="['/login']">Logout</ion-button>
+  <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>
 
 </ion-content>
 

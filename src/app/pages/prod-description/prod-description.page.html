@@ -3,20 +3,24 @@
 <ion-content [fullscreen]="true">
   <ion-card color="yellow" >
     <ion-card-header>
-      <ion-card-title>{{item?.companyName}}</ion-card-title>
-      <ion-card-subtitle>{{item?.price}}</ion-card-subtitle>
+      <ion-card-title>{{business?.companyName}}</ion-card-title>
+      <ion-card-subtitle>{{business?.price}}</ion-card-subtitle>
     </ion-card-header>
 
-    <img src="{{item?.image}}" alt="image" class="img-card">
+    <img src="{{business?.image}}" alt="image" class="img-card">
 
     <ion-card-content>
-      {{item?.description}}
+      {{business?.description}}
     </ion-card-content>
 
     <ion-card-content class="ion-text-center  ion-justify-content-center ion-align-items-center">
-      <ion-button color="orange" fill="clear"><ion-label>0{{item?.contact}}</ion-label> &nbsp;&nbsp; <ion-icon class="big-icon" name="mail"></ion-icon></ion-button>
+      <ion-button color="orange" fill="clear"><ion-label>0{{business?.contact}}</ion-label> &nbsp;&nbsp; <ion-icon class="big-icon" name="mail"></ion-icon></ion-button>
     </ion-card-content>
   </ion-card>
+
+  <app-products [products]="products"></app-products>
+
+
 </ion-content>
 
 <app-barfooter></app-barfooter>

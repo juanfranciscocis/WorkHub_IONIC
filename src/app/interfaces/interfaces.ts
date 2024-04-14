@@ -6,6 +6,12 @@ export interface Business {
   contact: number;
 }
 
+export interface Products {
+  name: string;
+  price: number;
+  image: string;
+}
+
 
 export interface User {
   companyName: string;
@@ -13,3 +19,6 @@ export interface User {
   password: string;
   isCompany: boolean;
 }
+
+
+

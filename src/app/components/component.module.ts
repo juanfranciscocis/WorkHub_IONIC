@@ -4,13 +4,15 @@ import {HeaderComponent} from "./header/header.component";
 import {IonicModule} from "@ionic/angular";
 import {BarfooterComponent} from "./barfooter/barfooter.component";
 import {RouterLink} from "@angular/router";
+import {ProductsComponent} from "./products/products.component";
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    BarfooterComponent
+    BarfooterComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import {RouterLink} from "@angular/router";
   ],
   exports: [
     HeaderComponent,
-    BarfooterComponent
+    BarfooterComponent,
+    ProductsComponent
   ]
 })
 export class ComponentModule { }

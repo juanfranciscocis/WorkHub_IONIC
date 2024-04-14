@@ -27,4 +27,16 @@ export class PostsService {
   }
 
 
+  async getProductByName(companyName: string):Promise<DocumentData|null> {
+    const postsCollectionRef = collection(this.firestore, 'products');
+    const postsQuery = query(postsCollectionRef, where('companyName', '==', companyName));
+    const postsSnapshot = await getDocs(postsQuery);
+    if (!postsSnapshot.empty) {
+      //return all the products
+      return postsSnapshot.docs.map(doc => doc.data());
+    } else {
+      return null;
+    }
+
+  }
 }

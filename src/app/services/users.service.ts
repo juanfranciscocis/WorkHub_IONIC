@@ -20,6 +20,8 @@ export class UsersService {
       let path: string = document + '/' + id;
       try {
         await setDoc(doc(this.firestore, path), user);
+        // After creating the user, save user details in local storage for session management
+        localStorage.setItem('currentUser', JSON.stringify(user));
         return Promise.resolve(true);
       } catch (e) {
         return Promise.resolve(false);
@@ -39,6 +41,23 @@ export class UsersService {
       return Promise.resolve(false);
     }
   }
+
+  // Method to get the current user from local storage
+  getCurrentUser(): User | null {
+    const userString = localStorage.getItem('currentUser');
+    if (userString) {
+      return JSON.parse(userString);
+    } else {
+      return null;
+    }
+  }
+
+  // Method to clear the current user from local storage (on logout, for example)
+  clearCurrentUser(): void {
+    localStorage.removeItem('currentUser');
+  }
+
+
 
 
 }
