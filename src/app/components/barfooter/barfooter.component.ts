@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from "../../services/users.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-barfooter',
@@ -7,8 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarfooterComponent  implements OnInit {
 
-  constructor() { }
+  isCompany:boolean = false;
 
-  ngOnInit() {}
 
+  constructor(
+    private usersService:UsersService,
+    private router: Router
+              ) { }
+
+  ngOnInit() {
+    this.isCompany = this.usersService.getCurrentUser()?.isCompany || false;
+  }
+
+  companyOrPerson() {
+    if (this.isCompany) {
+        this.router.navigate(['/profile']);
+    }else {
+        this.router.navigate(['/profile-personal']);
+    }
+  }
 }

@@ -21,4 +21,10 @@ export interface User {
 }
 
 
+export interface Login{
+  companyName:string;
+  password:string;
+}
+
+
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, AlertInput} from '@ionic/angular';
-import {Products} from "../../interfaces/interfaces";
+import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
@@ -14,7 +14,16 @@ import {Router} from "@angular/router";
 export class ProfilePage implements OnInit {
 
   products:Products[] = []
-  nameParam: string = ''; //TODO: Retrieve the user name
+  business: Business = {
+    companyName: '',
+    price: 0,
+    description: '',
+    image: 'https://ionicframework.com/docs/img/demos/card-media.png',
+    contact: 0,
+  };
+  nameParam: string = ''; //User from local storage
+
+
   constructor(
     private alertController: AlertController,
     private postsService:PostsService,
@@ -23,8 +32,19 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.nameParam =this.userService.getCurrentUser()?.companyName || 'CocaCola';
+    this.nameParam =this.userService.getCurrentUser()?.companyName || '';
     console.log(this.nameParam)
+
+
+    //Get the post by the name parameter
+    this.postsService.getPostByCompanyName(this.nameParam).then((data)=>{
+      this.business = data as Business;
+      console.log(this.business);
+    });
+
+
+
+
     //Get the product by the name parameter
     this.postsService.getProductByName(this.nameParam).then((data)=>{
       this.products = data as Products[];

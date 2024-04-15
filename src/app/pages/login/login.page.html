@@ -15,18 +15,18 @@
     </ion-card-header>
     <ion-card-content>
       <!-- Add an email input -->
-      <ion-label class="ion-text-start white-text">Email or Username</ion-label>
+      <ion-label class="ion-text-start white-text">Username</ion-label>
       <ion-item class="ion-border-radius" color="yellow">
-        <ion-input type="email" class="" required></ion-input>
+        <ion-input [(ngModel)]="user.companyName" type="email" class="" required></ion-input>
       </ion-item>
       <br>
       <!-- Add a password input -->
       <ion-label class="ion-text-start white-text">Password</ion-label>
       <ion-item class=" ion-border-radius" color="yellow">
-        <ion-input type="password" required></ion-input>
+        <ion-input [(ngModel)]="user.password" type="password" required></ion-input>
       </ion-item>
     </ion-card-content>
-    <ion-button expand="block" color="yellow" class="ion-margin" [routerLink]="['/home']">
+    <ion-button expand="block" color="yellow" class="ion-margin" (click)="loginUser()">
       <ion-label class="white-text">Login</ion-label>
     </ion-button>
   </ion-card>
