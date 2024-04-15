@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card color="yellow" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
+  <ion-card color="Primary" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
     <img src= {{item.image}}/>
     <ion-card-header >
       <ion-card-title>{{item.companyName}}</ion-card-title>
