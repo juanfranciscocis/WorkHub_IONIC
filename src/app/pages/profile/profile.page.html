@@ -1,6 +1,14 @@
 <app-header></app-header>
 
+
+
 <ion-content [fullscreen]="true">
+
+  <div *ngIf="isLoadingBusiness||isLoadingProducts" class="ion-align-items-center ion-text-center ion-justify-content-center ion-padding"><ion-spinner name="lines"></ion-spinner></div>
+
+
+
+  <div *ngIf="!isLoadingBusiness && !isLoadingProducts">
   <ion-card color="yellow">
     <ion-card-header>
       <ion-card-title><ion-input placeholder="Name of The Company " value="{{business.companyName}}"></ion-input></ion-card-title>
@@ -25,7 +33,7 @@
 
   <!-- Button to logout -->
   <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>
-
+  </div>
 </ion-content>
 
 <app-barfooter></app-barfooter>

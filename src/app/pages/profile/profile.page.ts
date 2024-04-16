@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AlertController, AlertInput} from '@ionic/angular';
+import {AlertController, AlertInput, LoadingController} from '@ionic/angular';
 import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
@@ -22,34 +22,39 @@ export class ProfilePage implements OnInit {
     contact: 0,
   };
   nameParam: string = ''; //User from local storage
+  isLoadingBusiness: boolean = true;
+  isLoadingProducts: boolean = true;
 
 
   constructor(
     private alertController: AlertController,
     private postsService:PostsService,
     private userService:UsersService,
-    private  router: Router
+    private  router: Router,
+    private loadingController: LoadingController,
   ) {}
 
-  ngOnInit() {
-    this.nameParam =this.userService.getCurrentUser()?.companyName || '';
+  async ngOnInit() {
+    this.nameParam = this.userService.getCurrentUser()?.companyName || '';
     console.log(this.nameParam)
 
 
     //Get the post by the name parameter
-    this.postsService.getPostByCompanyName(this.nameParam).then((data)=>{
+    this.postsService.getPostByCompanyName(this.nameParam).then((data) => {
       this.business = data as Business;
       console.log(this.business);
+      this.isLoadingBusiness = false;
     });
-
-
 
 
     //Get the product by the name parameter
-    this.postsService.getProductByName(this.nameParam).then((data)=>{
+    this.postsService.getProductByName(this.nameParam).then((data) => {
       this.products = data as Products[];
       console.log('Products:', this.products);
+      this.isLoadingProducts = false;
     });
+
+
   }
 
 

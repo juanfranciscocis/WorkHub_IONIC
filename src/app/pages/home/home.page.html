@@ -1,6 +1,9 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
+
+  <div *ngIf="isLoadingBusiness" class="ion-align-items-center ion-text-center ion-justify-content-center ion-padding"><ion-spinner name="lines"></ion-spinner></div>
+  <div *ngIf="!isLoadingBusiness" class="ion-padding">
   <ion-card color="Primary" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
     <img src= {{item.image}}/>
     <ion-card-header >
@@ -11,6 +14,7 @@
       {{item.description}}
     </ion-card-content>
   </ion-card>
+  </div>
 
 
 
