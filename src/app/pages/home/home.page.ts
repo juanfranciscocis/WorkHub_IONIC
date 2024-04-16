@@ -12,10 +12,12 @@ import {Business} from "../../interfaces/interfaces";
 })
 export class HomePage implements OnInit {
   items: Business[] | undefined;
+  isLoadingBusiness: boolean = true;
 
   constructor(private service: PostsService, private router: Router) {
     this.service.getAllPosts().then((data) => {
       this.items = data as Business[];
+      this.isLoadingBusiness = false;
     });
 
   }

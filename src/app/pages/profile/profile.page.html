@@ -1,14 +1,28 @@
 <app-header></app-header>
 
+
+
 <ion-content [fullscreen]="true">
+
+
+  <div *ngIf="isLoadingBusiness||isLoadingProducts" class="flex justify-center items-center p-5">
+    <ion-spinner name="lines"></ion-spinner>
+  </div>
+
+
+
+  <div *ngIf="!isLoadingBusiness && !isLoadingProducts">
   <ion-card >
+
     <ion-card-header>
       <ion-card-title><ion-input placeholder="Name of The Company " value="{{business.companyName}}"></ion-input></ion-card-title>
       <ion-card-subtitle><ion-input placeholder="Price of the service" value="${{business.price}}"></ion-input></ion-card-subtitle>
     </ion-card-header>
-    <img  [src]="business.image" alt="{{business.companyName}}" />
+    <div class="min-w-56">
+      <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}" />
+    </div>
     <ion-card-content>
-        <ion-textarea placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
+        <ion-textarea auto-grow="true"placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
     </ion-card-content>
     <ion-card-content>
       <ion-textarea placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
@@ -25,7 +39,7 @@
 
   <!-- Button to logout -->
   <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>
-
+  </div>
 </ion-content>
 
 <app-barfooter></app-barfooter>
