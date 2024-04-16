@@ -2,8 +2,18 @@ ion-label {
   white-space: normal !important;
 }
 
+
 img{
   width: 100%;
   height: auto;
+}
+
+ion-card-title {
+  --color: white;
+}
+
+ion-card-subtitle {
+  --color: orange;
+
 }
 

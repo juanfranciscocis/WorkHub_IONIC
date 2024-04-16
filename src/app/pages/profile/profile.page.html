@@ -4,6 +4,7 @@
 
 <ion-content [fullscreen]="true">
 
+
   <div *ngIf="isLoadingBusiness||isLoadingProducts" class="flex justify-center items-center p-5">
     <ion-spinner name="lines"></ion-spinner>
   </div>
@@ -11,7 +12,8 @@
 
 
   <div *ngIf="!isLoadingBusiness && !isLoadingProducts">
-  <ion-card color="yellow">
+  <ion-card >
+
     <ion-card-header>
       <ion-card-title><ion-input placeholder="Name of The Company " value="{{business.companyName}}"></ion-input></ion-card-title>
       <ion-card-subtitle><ion-input placeholder="Price of the service" value="${{business.price}}"></ion-input></ion-card-subtitle>
