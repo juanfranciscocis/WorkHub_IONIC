@@ -4,7 +4,9 @@
 
 <ion-content [fullscreen]="true">
 
-  <div *ngIf="isLoadingBusiness||isLoadingProducts" class="ion-align-items-center ion-text-center ion-justify-content-center ion-padding"><ion-spinner name="lines"></ion-spinner></div>
+  <div *ngIf="isLoadingBusiness||isLoadingProducts" class="flex justify-center items-center p-5">
+    <ion-spinner name="lines"></ion-spinner>
+  </div>
 
 
 
