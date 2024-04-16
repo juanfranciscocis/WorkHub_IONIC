@@ -16,7 +16,9 @@
       <ion-card-title><ion-input placeholder="Name of The Company " value="{{business.companyName}}"></ion-input></ion-card-title>
       <ion-card-subtitle><ion-input placeholder="Price of the service" value="${{business.price}}"></ion-input></ion-card-subtitle>
     </ion-card-header>
-    <img  [src]="business.image" alt="{{business.companyName}}" />
+    <div class="min-w-56">
+      <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}" />
+    </div>
     <ion-card-content>
         <ion-textarea placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
     </ion-card-content>
