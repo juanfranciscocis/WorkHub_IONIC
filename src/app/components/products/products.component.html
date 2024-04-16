@@ -2,19 +2,19 @@
   <ion-row>
     <ng-container *ngFor="let item of products; let i = index">
       <ion-col *ngIf="i % 2 === 0" size="6">
-        <ion-card color="yellow">
+        <ion-card >
           <img src="{{products[i].image}}" alt="image" class="img-card">
           <ion-card-content >
-            <h2 class="ion-text-center">{{products[i].name}}</h2>
+            <h2 color="orange" class="ion-text-center">{{products[i].name}}</h2>
             <h2 class="ion-text-center">${{products[i].price}}</h2>
           </ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col *ngIf="i % 2 !== 0" size="6">
-        <ion-card color="yellow">
+        <ion-card >
           <img src="{{products[i].image}}" alt="image" class="img-card">
           <ion-card-content>
-            <h2 class="ion-text-center">{{products[i].name}}</h2>
+            <h2 color="orange" class="ion-text-center">{{products[i].name}}</h2>
             <h2 class="ion-text-center">${{products[i].price}}</h2>
           </ion-card-content>
         </ion-card>
