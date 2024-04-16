@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AlertController, AlertInput, LoadingController} from '@ionic/angular';
+import {AlertController, AlertInput} from '@ionic/angular';
 import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
@@ -30,8 +30,7 @@ export class ProfilePage implements OnInit {
     private alertController: AlertController,
     private postsService:PostsService,
     private userService:UsersService,
-    private  router: Router,
-    private loadingController: LoadingController,
+    private router: Router,
   ) {}
 
   async ngOnInit() {
