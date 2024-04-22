@@ -132,6 +132,9 @@ export class ProfilePage implements OnInit {
   logout() {
     this.userService.clearCurrentUser();
     this.nameParam = '';
+    this.router.navigateByUrl('/profile', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 
   public publish(){
