@@ -4,6 +4,8 @@ import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
+import {bus} from "ionicons/icons";
+import {publish} from "rxjs";
 
 
 @Component({
@@ -73,8 +75,10 @@ export class ProfilePage implements OnInit {
         },
         {
           text: 'Save',
-          handler: (data) => {
-            console.log('Save clicked', data);
+          handler: async (data) => {
+            await this.postsService.createProduct(data, this.business).then((data) => {
+              location.reload();
+            });
           }
         }
       ]
@@ -107,9 +111,11 @@ export class ProfilePage implements OnInit {
   logout() {
     this.userService.clearCurrentUser();
     this.nameParam = '';
-    // Navigate to the current route to force reload
-    this.router.navigateByUrl('/profile', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/login']);
+  }
+
+  public publish(){
+    this.postsService.updatePost(this.business).then((data) => {
+      location.reload();
     });
   }
 }

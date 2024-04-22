@@ -2,7 +2,7 @@
   <ion-row>
     <ng-container *ngFor="let item of products; let i = index">
       <ion-col *ngIf="i % 2 === 0" size="6">
-        <ion-card >
+        <ion-card (click)="deleteProduct(i)" >
           <img src="{{products[i].image}}" alt="image" class="img-card">
           <ion-card-content >
             <h2 color="orange" class="ion-text-center">{{products[i].name}}</h2>
@@ -10,7 +10,7 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col *ngIf="i % 2 !== 0" size="6">
+      <ion-col (click)="deleteProduct(i)" *ngIf="i % 2 !== 0" size="6">
         <ion-card >
           <img src="{{products[i].image}}" alt="image" class="img-card">
           <ion-card-content>

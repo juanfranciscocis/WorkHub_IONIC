@@ -9,7 +9,7 @@ import {
   addDoc,
   setDoc,
   doc,
-  getDoc
+  getDoc, updateDoc
 } from '@angular/fire/firestore';
 import {Login, User} from "../interfaces/interfaces";
 import {getAll} from "@angular/fire/remote-config";
@@ -101,6 +101,42 @@ export class UsersService {
   clearCurrentUser(): void {
     localStorage.removeItem('currentUser');
   }
+
+
+  //Update the user in the database
+  async updateUser(user: User): Promise<boolean> {
+    const document: string = 'users';
+    const id: string = user.companyName;
+    const path: string = `${document}/${id}`;
+
+    try {
+      // Update the user in the database
+
+      const update = doc(this.firestore, document, id);
+
+      await updateDoc(update, {
+        companyName: user.companyName,
+        email: user.email,
+        password: user.password,
+        isCompany: user.isCompany
+      });
+
+      // Optional: Log success message
+      console.log('User updated successfully:', user);
+
+      // Return true indicating successful update
+      return true;
+    } catch (error) {
+      // Log the error for debugging
+      console.error('Error updating user:', error);
+
+      // Return false indicating update failure
+      return false;
+    }
+  }
+
+
+
 
 
 

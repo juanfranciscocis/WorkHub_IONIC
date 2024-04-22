@@ -15,17 +15,17 @@
   <ion-card >
 
     <ion-card-header>
-      <ion-card-title><ion-input placeholder="Name of The Company " value="{{business.companyName}}"></ion-input></ion-card-title>
-      <ion-card-subtitle><ion-input placeholder="Price of the service" value="${{business.price}}"></ion-input></ion-card-subtitle>
+      <ion-card-title>{{business.companyName}}</ion-card-title>
+      <ion-card-subtitle><ion-input [(ngModel)]="business.price" placeholder="Price of the service" value="{{business.price}}"></ion-input></ion-card-subtitle>
     </ion-card-header>
     <div class="min-w-56">
       <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}" />
     </div>
     <ion-card-content>
-        <ion-textarea auto-grow="true"placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
+        <ion-textarea [(ngModel)]="business.description" auto-grow="true"placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
     </ion-card-content>
     <ion-card-content>
-      <ion-textarea placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
+      <ion-textarea [(ngModel)]="business.contact" placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
     </ion-card-content>
   </ion-card>
 
@@ -35,7 +35,7 @@
   <ion-button class="ion-margin" color="primary" expand="block" (click)="presentAlert()">Add Product</ion-button>
 
   <!-- save button -->
-  <ion-button class="ion-margin" color="orange" expand="block">Publish</ion-button>
+  <ion-button (click)="publish()" class="ion-margin" color="orange" expand="block">Publish</ion-button>
 
   <!-- Button to logout -->
   <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>

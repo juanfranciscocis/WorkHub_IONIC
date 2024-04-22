@@ -10,10 +10,10 @@
               <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             </ion-avatar>
             <br>
-            <ion-card-title>Pedro Vera</ion-card-title>
+            <ion-card-title>{{ user.companyName }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-input placeholder="Email"></ion-input>
+            <ion-input [(ngModel)]="user.email" placeholder="Email" value="{{user.email}}"></ion-input>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -23,7 +23,7 @@
     <!-- Button to save changes -->
     <ion-row class="ion-justify-content-center ion-text-center">
       <ion-col size="12">
-        <ion-button class="ion-margin" expand="block" color="orange" >Save Changes</ion-button>
+        <ion-button class="ion-margin" expand="block" color="orange" (click)="saveChanges()" >Save Changes</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
