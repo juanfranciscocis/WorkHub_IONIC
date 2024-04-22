@@ -28,7 +28,14 @@
       <ion-textarea [(ngModel)]="business.contact" placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
     </ion-card-content>
   </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-chip id="{{cat}}" *ngFor="let cat of categories" (click)="addCategory(cat)">{{cat}}</ion-chip>
+        </ion-col>
 
+      </ion-row>
+    </ion-grid>
   <app-products [products]="products"></app-products>
 
   <!-- Add Product button -->

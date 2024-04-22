@@ -4,8 +4,9 @@ import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
-import {bus} from "ionicons/icons";
+import {bus, business} from "ionicons/icons";
 import {publish} from "rxjs";
+import {SearchService} from "../../services/search.service";
 
 
 @Component({
@@ -14,6 +15,10 @@ import {publish} from "rxjs";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
+
+  categories = ['Electronics', 'Clothing', 'Food','Tourism', 'Furniture', 'Books', 'Other'];
+
 
   products:Products[] = []
   business: Business = {
@@ -33,7 +38,12 @@ export class ProfilePage implements OnInit {
     private postsService:PostsService,
     private userService:UsersService,
     private router: Router,
-  ) {}
+    private searchService: SearchService
+  ) {
+
+
+
+  }
 
   async ngOnInit() {
     this.nameParam = this.userService.getCurrentUser()?.companyName || '';
@@ -53,6 +63,17 @@ export class ProfilePage implements OnInit {
       this.products = data as Products[];
       console.log('Products:', this.products);
       this.isLoadingProducts = false;
+    });
+
+
+    this.searchService.getCategories(this.userService.getCurrentUser()?.companyName || '').then((data) => {
+      console.log(data)
+      data.forEach((value) => {
+        let category = document.getElementById(value);
+        if (category) {
+          category.style.backgroundColor = 'green';
+        }
+      });
     });
 
 
@@ -116,6 +137,23 @@ export class ProfilePage implements OnInit {
   public publish(){
     this.postsService.updatePost(this.business).then((data) => {
       location.reload();
+    });
+  }
+
+  addCategory(cat: string) {
+    this.searchService.addCategory(cat,this.business.companyName).then((data) => {
+
+      if (!data){
+        location.reload();
+      }
+
+      //Change color of the category
+      let category = document.getElementById(cat);
+      if (category?.style.backgroundColor === 'green') {
+        category.style.backgroundColor = 'ion-color-primary';
+      } else {
+        category!.style.backgroundColor = 'green';
+      }
     });
   }
 }
