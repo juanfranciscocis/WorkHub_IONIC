@@ -5,20 +5,19 @@
 
   <div *ngIf="isLoadingBusiness" class="flex justify-center items-center p-5"><ion-spinner name="lines"></ion-spinner></div>
   <div *ngIf="!isLoadingBusiness" class="ion-padding">
-  <ion-card color="Primary" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
-    <img class="" src= {{item.image}}/>
-    <ion-card-header >
-      <ion-card-title>{{item.companyName}}</ion-card-title>
-      <ion-card-subtitle>$ {{item.price}}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content color="orange">
-      {{item.description}}
-    </ion-card-content>
-  </ion-card>
+    <ion-card color="Primary" *ngFor="let item of items" (click)="onclickpage(item.companyName)">
+      <ion-card-content class="card-content">
+        <img class="" src= {{item.image}} class="centered-image"/>
+      </ion-card-content>
+      <ion-card-header >
+        <ion-card-title>{{item.companyName}}</ion-card-title>
+        <ion-card-subtitle>$ {{item.price}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content color="orange">
+        {{item.description}}
+      </ion-card-content>
+    </ion-card>
   </div>
-
-
-
 
 
 </ion-content>

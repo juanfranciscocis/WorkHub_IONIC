@@ -12,22 +12,24 @@
 
 
   <div *ngIf="!isLoadingBusiness && !isLoadingProducts">
-  <ion-card >
+    <ion-card >
 
-    <ion-card-header>
-      <ion-card-title>{{business.companyName}}</ion-card-title>
-      <ion-card-subtitle><ion-input [(ngModel)]="business.price" placeholder="Price of the service" value="{{business.price}}"></ion-input></ion-card-subtitle>
-    </ion-card-header>
-    <div class="min-w-56">
-      <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}" />
-    </div>
-    <ion-card-content>
+      <ion-card-header>
+        <ion-card-title>{{business.companyName}}</ion-card-title>
+        <ion-card-subtitle><ion-input [(ngModel)]="business.price" placeholder="Price of the service" value="{{business.price}}"></ion-input></ion-card-subtitle>
+      </ion-card-header>
+      <div class="min-w-56">
+        <ion-card-content class="card-content">
+          <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}"  class="centered-image"/>
+        </ion-card-content>
+      </div>
+      <ion-card-content>
         <ion-textarea [(ngModel)]="business.description" auto-grow="true"placeholder="Add a description here" value="{{business.description}}"></ion-textarea>
-    </ion-card-content>
-    <ion-card-content>
-      <ion-textarea [(ngModel)]="business.contact" placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-textarea [(ngModel)]="business.contact" placeholder="Add a contact number here" value="{{business.contact}}"></ion-textarea>
+      </ion-card-content>
+    </ion-card>
     <ion-grid>
       <ion-row>
         <ion-col size="12">
@@ -36,18 +38,17 @@
 
       </ion-row>
     </ion-grid>
-  <app-products [products]="products"></app-products>
+    <app-products [products]="products"></app-products>
 
-  <!-- Add Product button -->
-  <ion-button class="ion-margin" color="primary" expand="block" (click)="presentAlert()">Add Product</ion-button>
+    <!-- Add Product button -->
+    <ion-button class="ion-margin" color="primary" expand="block" (click)="presentAlert()">Add Product</ion-button>
 
-  <!-- save button -->
-  <ion-button (click)="publish()" class="ion-margin" color="orange" expand="block">Publish</ion-button>
+    <!-- save button -->
+    <ion-button (click)="publish()" class="ion-margin" color="orange" expand="block">Publish</ion-button>
 
-  <!-- Button to logout -->
-  <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>
+    <!-- Button to logout -->
+    <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>
   </div>
 </ion-content>
 
 <app-barfooter></app-barfooter>
-

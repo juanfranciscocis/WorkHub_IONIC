@@ -11,7 +11,7 @@ export class SearchService {
   constructor( private firestore: Firestore) { }
 
 
-  //get all the categories
+  //get all the categories of a company
   async getCategories(companyName: string): Promise<string[]> {
     let data;
     let category: string[] = [];
@@ -50,8 +50,27 @@ export class SearchService {
     await setDoc(document, {category: category});
     return Promise.resolve(true);
 
-
-
-
   }
+
+  //search
+  async makeSearch(search?: string, category?:string): Promise<Business[]> {
+    return [
+      {
+        companyName: search || 'Company 1',
+        price: 100,
+        description: category || 'Description 1',
+        image: 'image 1',
+        contact: 999
+      },
+      {
+        companyName: 'Company 2',
+        price: 200,
+        description: 'Description 2',
+        image: 'image 2',
+        contact: 999
+      }
+    ];
+  }
+
+
 }
