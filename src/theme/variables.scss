@@ -96,13 +96,13 @@
   --ion-color-yellow-tint: #ffcd4b;
 }
 
-@media (prefers-color-scheme: dark) {
+
   /*
    * Dark Colors
    * -------------------------------------------
    */
 
-  body {
+  body.dark {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -253,7 +253,7 @@
 
     --ion-card-background: #1e1e1e;
   }
-}
+
 
 
 
