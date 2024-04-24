@@ -1,7 +1,6 @@
 <app-header></app-header>
 
 
-
 <ion-content [fullscreen]="true">
 
 
@@ -21,6 +20,13 @@
       <div class="min-w-56">
         <ion-card-content class="card-content">
           <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}"  class="centered-image" >
+        </ion-card-content>
+        <ion-card-content class="flex justify-center items-center ">
+          <ion-button [disabled]="isImageLoaded" (click)="upload.click()">
+            Change Image
+            <input type="file" #upload (change)="onImageLoad()" style="display: none;">
+          </ion-button>
+          <ion-button (click)="uploadFile(upload)"  class="ion-margin" color=success  expand="block" *ngIf="isImageLoaded">Save Image</ion-button>
         </ion-card-content>
       </div>
       <ion-card-content>
@@ -44,10 +50,9 @@
     <ion-button class="ion-margin" color="primary" expand="block" (click)="presentAlert()">Add Product</ion-button>
 
     <!-- save button -->
-    <ion-button (click)="publish()" class="ion-margin" color="orange" expand="block">Publish</ion-button>
+    <ion-button (click)="publish()" class="ion-margin" color="orange" expand="block">Publish Post</ion-button>
 
-    <ion-button  class="ion-margin" expand="block"><input type="file" #upload></ion-button>
-    <ion-button (click)="uploadFile(upload)"  class="ion-margin"  expand="block">Upload File</ion-button>
+
 
     <!-- Button to logout -->
     <ion-button class="ion-margin" expand="block" color="danger" (click)="logout()">Logout</ion-button>

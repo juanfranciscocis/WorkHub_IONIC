@@ -20,10 +20,15 @@ export class ProductsComponent  implements OnInit {
   ngOnInit() {}
 
   async deleteProduct(index: number) {
-    console.log("Delete product")
-    console.log(this.products[index].id)
-    await this.postsService.deleteProduct(this.products[index].id).then((r) => {
-      location.reload();
-    });
+    //verify that im not in the home page
+    if (window.location.pathname !== '/prod-description') {
+      console.log("Delete product")
+      console.log(this.products[index].id)
+      await this.postsService.deleteProduct(this.products[index].id).then((r) => {
+        location.reload();
+      });
+    }
   }
+
+  protected readonly location = location;
 }

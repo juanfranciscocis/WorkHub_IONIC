@@ -2,20 +2,30 @@
   <ion-row>
     <ng-container *ngFor="let item of products; let i = index">
       <ion-col *ngIf="i % 2 === 0" size="6">
-        <ion-card (click)="deleteProduct(i)" >
+        <ion-card>
+          <div class="flex items-center justify-center">
           <img src="{{products[i].image}}" alt="image" class="img-card">
+          </div>
           <ion-card-content >
             <h2 color="orange" class="ion-text-center">{{products[i].name}}</h2>
             <h2 class="ion-text-center">${{products[i].price}}</h2>
           </ion-card-content>
+          <ion-card-content class="flex items-center justify-center" *ngIf="location.pathname !== '/prod-description'">
+            <ion-icon name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
+          </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col (click)="deleteProduct(i)" *ngIf="i % 2 !== 0" size="6">
+      <ion-col  *ngIf="i % 2 !== 0" size="6">
         <ion-card >
+          <div class="flex items-center justify-center">
           <img src="{{products[i].image}}" alt="image" class="img-card">
+          </div>
           <ion-card-content>
             <h2 color="orange" class="ion-text-center">{{products[i].name}}</h2>
             <h2 class="ion-text-center">${{products[i].price}}</h2>
+          </ion-card-content>
+          <ion-card-content class="flex items-center justify-center" *ngIf="location.pathname !== '/prod-description'">
+            <ion-icon name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>

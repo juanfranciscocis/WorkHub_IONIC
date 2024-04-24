@@ -20,6 +20,8 @@ export class ProfilePage implements OnInit {
 
   private readonly storage: Storage = inject(Storage);
 
+  isImageLoaded: boolean = false;
+
 
   categories = ['Electronics', 'Clothing', 'Food','Tourism', 'Furniture', 'Books', 'Other'];
 
@@ -87,6 +89,13 @@ export class ProfilePage implements OnInit {
 
 
 
+  onImageLoad() {
+    this.isImageLoaded = true;
+  }
+
+
+
+
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Create a new product',
@@ -146,6 +155,8 @@ export class ProfilePage implements OnInit {
     this.postsService.updatePost(this.business).then((data) => {
       location.reload();
     });
+
+
   }
 
   addCategory(cat: string) {
