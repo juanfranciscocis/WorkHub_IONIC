@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {AlertController, AlertInput} from '@ionic/angular';
 import {Business, Products} from "../../interfaces/interfaces";
 import {PostsService} from "../../services/posts.service";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
-import {bus, business} from "ionicons/icons";
-import {publish} from "rxjs";
 import {SearchService} from "../../services/search.service";
+import {ImagesService} from "../../services/images.service";
+
+import {Storage, ref, uploadBytesResumable, getDownloadURL} from '@angular/fire/storage';
+import {business} from "ionicons/icons";
 
 
 @Component({
@@ -15,6 +17,8 @@ import {SearchService} from "../../services/search.service";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
+  private readonly storage: Storage = inject(Storage);
 
 
   categories = ['Electronics', 'Clothing', 'Food','Tourism', 'Furniture', 'Books', 'Other'];
@@ -38,7 +42,8 @@ export class ProfilePage implements OnInit {
     private postsService:PostsService,
     private userService:UsersService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private imagesService:ImagesService
   ) {
 
 
@@ -159,4 +164,43 @@ export class ProfilePage implements OnInit {
       }
     });
   }
+
+
+  async uploadFile(input: HTMLInputElement) {
+    if (!input.files) return
+
+    const files: FileList = input.files;
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files.item(i);
+      if (file) {
+        const storageRef = ref(this.storage, file.name);
+        await uploadBytesResumable(storageRef, file).then((snapshot)=>{
+          //get the url
+          console.log('Uploaded a blob or file!', snapshot.ref.fullPath);
+          this.downloadFile(snapshot.ref.fullPath).then(async (data) => {
+            this.business.image = data;
+            console.log(this.business.image);
+            await this.publish();
+          });
+        });
+      }
+
+
+    }
+  }
+
+  async downloadFile(file: string):Promise<string> {
+    let finalUrl = '';
+    await getDownloadURL(ref(this.storage, file)).then((url) => {
+      console.log('File available at', url);
+      finalUrl = url;
+    });
+    return finalUrl;
+  }
+
+
+
+
+
 }
