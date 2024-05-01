@@ -27,8 +27,12 @@ export class SearchPage implements OnInit {
 
   category($event: any) {
     this.choosedCategory = $event.detail.value;
-    this.search("");
+    if ($event !== ""){
+      this.searchService.makeSearchByCategory(this.choosedCategory).then((data) => {
+        this.searchedBusiness = data;
+      });
   }
+}
 
   search($event: any) {
     let search;
@@ -39,7 +43,7 @@ export class SearchPage implements OnInit {
       search = "";
     }
 
-    this.searchService.makeSearch(search, this.choosedCategory).then((data) => {
+    this.searchService.makeSearch(search).then((data) => {
       this.searchedBusiness = data;
     });
   }

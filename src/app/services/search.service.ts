@@ -56,7 +56,7 @@ export class SearchService {
   }
 
 
-  async makeSearchByCategory(category: string | undefined): Promise<string[]> {
+  async makeSearchByCategory(category: string | undefined): Promise<any> {
     try {
       // Create a query to check if a user with the provided userId exists
       const q = query(collection(this.firestore, 'categories'), where('category', 'array-contains', category));
@@ -67,22 +67,10 @@ export class SearchService {
         let data = doc.data();
         bussinessNames.push(data['companyName']);
       });
-      return Promise.resolve(bussinessNames);
-    } catch (error) {
-      return Promise.resolve([]);
-    }
-  }
 
-  //search
-  async makeSearch(search?: string, category?:string): Promise<Business[]> {
-    console.log(search);
-    console.log(category);
-    let business: Business[] = [];
-
+      let business: Business[] = [];
       try {
-        let categories: string[] = [];
-        categories = await this.makeSearchByCategory(category);
-        for (let cat of categories) {
+        for (let cat of bussinessNames) {
           const q = query(collection(this.firestore, 'posts'), where('companyName', '==', cat));
           // Get the documents that match the query
           const querySnapshot = await getDocs(q);
@@ -97,6 +85,16 @@ export class SearchService {
       } catch (e) {
         console.log(e);
       }
+      return Promise.resolve([]);
+    } catch (error) {
+      return Promise.resolve([]);
+    }
+  }
+
+  //search
+  async makeSearch(search?: string): Promise<Business[]> {
+    console.log(search);
+    let business: Business[] = [];
 
     try {
       // Create a query to check if a user with the provided userId exists
