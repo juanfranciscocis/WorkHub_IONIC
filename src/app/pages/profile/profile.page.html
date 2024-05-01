@@ -18,7 +18,7 @@
         <ion-card-subtitle><ion-input [(ngModel)]="business.price" placeholder="Price of the service" value="{{business.price}}"></ion-input></ion-card-subtitle>
       </ion-card-header>
       <div class="min-w-56">
-        <ion-card-content class="card-content">
+        <ion-card-content class="card-content" *ngIf="business.image">
           <img class="min-w-56" [src]="business.image" alt="{{business.companyName}}"  class="centered-image" >
         </ion-card-content>
         <ion-card-content class="flex justify-center items-center ">

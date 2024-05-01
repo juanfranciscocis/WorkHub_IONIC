@@ -3,7 +3,7 @@
     <ng-container *ngFor="let item of products; let i = index">
       <ion-col *ngIf="i % 2 === 0" size="6">
         <ion-card>
-          <div class="flex items-center justify-center">
+          <div class="flex items-center justify-center" *ngIf="products[i].image">
           <img src="{{products[i].image}}" alt="image" class="img-card">
           </div>
           <ion-card-content >
@@ -11,13 +11,18 @@
             <h2 class="ion-text-center">${{products[i].price}}</h2>
           </ion-card-content>
           <ion-card-content class="flex items-center justify-center" *ngIf="location.pathname !== '/prod-description'">
-            <ion-icon name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
+            <ion-icon  class="p-1" name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
+
+            <ion-icon  class="p-1" name="cloud-upload" color="primary" (click)="upload.click()" [class.hidden]="isImageLoaded">
+              <input type="file" #upload (change)="onImageLoad()" style="display: none;">
+            </ion-icon>
+            <ion-icon name="checkmark-outline" (click)="uploadFile(upload, i)" color=success *ngIf="isImageLoaded">Save Image</ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col  *ngIf="i % 2 !== 0" size="6">
         <ion-card >
-          <div class="flex items-center justify-center">
+          <div class="flex items-center justify-center" *ngIf="products[i].image">
           <img src="{{products[i].image}}" alt="image" class="img-card">
           </div>
           <ion-card-content>
@@ -25,7 +30,12 @@
             <h2 class="ion-text-center">${{products[i].price}}</h2>
           </ion-card-content>
           <ion-card-content class="flex items-center justify-center" *ngIf="location.pathname !== '/prod-description'">
-            <ion-icon name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
+            <ion-icon  class="p-1 " name="trash" color="danger" (click)="deleteProduct(i)"></ion-icon>
+
+            <ion-icon  class="p-1" name="cloud-upload" color="primary" (click)="upload.click()" [class.hidden]="isImageLoaded">
+              <input type="file" #upload (change)="onImageLoad()" style="display: none;">
+            </ion-icon>
+            <ion-icon name="checkmark-outline" (click)="uploadFile(upload, i)" color=success *ngIf="isImageLoaded">Save Image</ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>

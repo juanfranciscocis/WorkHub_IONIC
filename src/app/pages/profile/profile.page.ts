@@ -132,11 +132,6 @@ export class ProfilePage implements OnInit {
       },
     },
     {
-      name: 'productImage',
-      type: 'url',
-      placeholder: 'Product Image',
-    },
-    {
       name: 'price',
       type: 'number',
       placeholder: 'Price',

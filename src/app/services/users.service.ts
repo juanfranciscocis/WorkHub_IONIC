@@ -34,6 +34,19 @@ export class UsersService {
         await setDoc(doc(this.firestore, path), user);
         // After creating the user, save user details in local storage for session management
         localStorage.setItem('currentUser', JSON.stringify(user));
+
+        if(user.isCompany) {
+
+          //Create a empty Post
+          await setDoc(doc(this.firestore, 'posts', user.companyName), {
+            companyName: user.companyName,
+            description: '',
+            contact: '',
+            image: '',
+            price: 0
+          });
+        }
+
         return Promise.resolve(true);
       } catch (e) {
         return Promise.resolve(false);

@@ -80,7 +80,7 @@ export class PostsService {
       await setDoc(document, {
         name: product.productName,
         price: product.price,
-        image: product.productImage,
+        image: "",
         companyName: bussiness.companyName,
         id: id
       });
@@ -104,5 +104,18 @@ export class PostsService {
   }
 
 
-
+  async updateProduct(product: any):Promise<boolean> {
+    try {
+      await updateDoc(doc(this.firestore, 'products', product.id), {
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        companyName: product.companyName
+      });
+      return Promise.resolve(true);
+    } catch (e) {
+      console.log(e);
+    }
+    return Promise.resolve(false);
+  }
 }
