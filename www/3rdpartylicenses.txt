@@ -118,6 +118,8 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 ionic-loader
 
+ionicons/icons
+
 rxjs
 Apache-2.0
                                Apache License
