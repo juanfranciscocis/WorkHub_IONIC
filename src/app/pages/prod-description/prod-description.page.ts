@@ -38,4 +38,8 @@ export class ProdDescriptionPage implements OnInit {
     });
   }
 
+  whatsapp(contact: number | undefined) {
+    //Open the whatsapp app
+    window.open('https://wa.me/' + contact, '_blank');
+  }
 }
