@@ -29,4 +29,15 @@ export class HomePage implements OnInit {
     this.router.navigate(['/prod-description'], {queryParams: {name: name}});
 
   }
+  isCompany:boolean = false;
+  companyOrPerson() {
+    if (this.isCompany) {
+      this.router.navigate(['/profile']);
+    }else {
+      this.router.navigate(['/profile-personal']);
+    }
+  }
+
+
+
 }
