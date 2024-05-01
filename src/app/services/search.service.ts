@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {doc, Firestore, getDoc, setDoc} from "@angular/fire/firestore";
+import {collection, doc, Firestore, getDoc, getDocs, query, setDoc, where} from "@angular/fire/firestore";
 import {Business} from "../interfaces/interfaces";
 import {getAll} from "@angular/fire/remote-config";
 
@@ -47,29 +47,71 @@ export class SearchService {
 
     //add the category
     category.push(cat);
-    await setDoc(document, {category: category});
+    await setDoc(document, {
+      companyName: companyName,
+      category: category
+    });
     return Promise.resolve(true);
 
   }
 
+
+  async makeSearchByCategory(category: string | undefined): Promise<string[]> {
+    try {
+      // Create a query to check if a user with the provided userId exists
+      const q = query(collection(this.firestore, 'categories'), where('category', 'array-contains', category));
+      // Get the documents that match the query
+      const querySnapshot = await getDocs(q);
+      let bussinessNames:string[] = [];
+      querySnapshot.forEach((doc) => {
+        let data = doc.data();
+        bussinessNames.push(data['companyName']);
+      });
+      return Promise.resolve(bussinessNames);
+    } catch (error) {
+      return Promise.resolve([]);
+    }
+  }
+
   //search
   async makeSearch(search?: string, category?:string): Promise<Business[]> {
-    return [
-      {
-        companyName: search || 'Company 1',
-        price: 100,
-        description: category || 'Description 1',
-        image: 'image 1',
-        contact: 999
-      },
-      {
-        companyName: 'Company 2',
-        price: 200,
-        description: 'Description 2',
-        image: 'image 2',
-        contact: 999
+    let business: Business[] = [];
+    if (search === undefined) {
+
+      try {
+        let categories: string[] = [];
+        categories = await this.makeSearchByCategory(category);
+        for (let cat of categories) {
+          const q = query(collection(this.firestore, 'posts'), where('companyName', '==', cat));
+          // Get the documents that match the query
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            let data = doc.data() as Business;
+            if (business.includes(data)) {
+              business.push(data);
+            }
+          });
+        }
+        return Promise.resolve(business);
+      } catch (e) {
+        console.log(e);
       }
-    ];
+    }
+    try {
+      // Create a query to check if a user with the provided userId exists
+      const q = query(collection(this.firestore, 'posts'), where('companyName', '>=', search));
+      // Get the documents that match the query
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        let data = doc.data() as Business;
+        if (!business.includes(data)){
+          business.push(data);
+        }
+      });
+      return Promise.resolve(business);
+    } catch (error) {
+      return Promise.resolve([]);
+    }
   }
 
 

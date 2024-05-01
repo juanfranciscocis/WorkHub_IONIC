@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from "../../services/search.service";
-import {search} from "ionicons/icons";
+import {business, search} from "ionicons/icons";
+import {Business} from "../../interfaces/interfaces";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -12,7 +14,12 @@ export class SearchPage implements OnInit {
   categories = ['Electronics', 'Clothing', 'Food','Tourism', 'Furniture', 'Books', 'Other'];
   choosedCategory: string = '';
 
-  constructor(private searchService: SearchService) {
+  searchedBusiness: Business[] | undefined;
+
+  constructor(
+    private searchService: SearchService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -33,11 +40,14 @@ export class SearchPage implements OnInit {
     }
 
     this.searchService.makeSearch(search, this.choosedCategory).then((data) => {
-      console.log(data);
+      this.searchedBusiness = data;
     });
   }
 
 
+  protected readonly business = business;
 
-
+  goToCompany(companyName:string) {
+    this.router.navigate(['/prod-description'], {queryParams: {name: companyName}});
+  }
 }
