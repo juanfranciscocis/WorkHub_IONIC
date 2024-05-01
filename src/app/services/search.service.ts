@@ -75,8 +75,9 @@ export class SearchService {
 
   //search
   async makeSearch(search?: string, category?:string): Promise<Business[]> {
+    console.log(search);
+    console.log(category);
     let business: Business[] = [];
-    if (search === undefined) {
 
       try {
         let categories: string[] = [];
@@ -87,7 +88,7 @@ export class SearchService {
           const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) => {
             let data = doc.data() as Business;
-            if (business.includes(data)) {
+            if (!business.includes(data)) {
               business.push(data);
             }
           });
@@ -96,7 +97,7 @@ export class SearchService {
       } catch (e) {
         console.log(e);
       }
-    }
+
     try {
       // Create a query to check if a user with the provided userId exists
       const q = query(collection(this.firestore, 'posts'), where('companyName', '>=', search));
