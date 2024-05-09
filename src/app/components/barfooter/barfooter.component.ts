@@ -14,7 +14,7 @@ export class BarfooterComponent  implements OnInit {
   inHome = false;
   inSearch = false;
   inProfile = false;
-
+  inFavorites = false;
 
   constructor(
     private usersService:UsersService,
@@ -31,6 +31,10 @@ export class BarfooterComponent  implements OnInit {
     //verify if im in the profile page
     if (window.location.pathname === '/profile' || window.location.pathname === '/profile-personal') {
       this.inProfile = true;
+    }
+    //verify if im in the favorites page
+    if (window.location.pathname === '/favorites') {
+      this.inFavorites = true;
     }
 
 

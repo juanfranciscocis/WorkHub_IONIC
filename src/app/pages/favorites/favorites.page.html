@@ -1,17 +1,16 @@
 <app-header></app-header>
 
-<ion-content [fullscreen]="true">
 
+
+<ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
-
   <div *ngIf="isLoadingBusiness" class="flex justify-center items-center p-5"><ion-spinner name="lines"></ion-spinner></div>
   <div *ngIf="!isLoadingBusiness" class="ion-padding">
     <ion-card color="Primary" *ngFor="let item of items">
       <div (click)="onclickpage(item.companyName)">
-      <ion-card-content class="card-content" >
+      <ion-card-content class="card-content">
         <img class="" src= {{item.image}} class="centered-image"/>
       </ion-card-content>
       <ion-card-header >
@@ -23,12 +22,28 @@
       </ion-card-content>
       </div>
       <ion-card-content color="orange" class="flex   justify-center">
-        <ion-icon name="star-outline" (click)="favoriteAlert(item.companyName)"></ion-icon>
+        <ion-icon name="star" (click)="unFavoriteAlert(item.companyName)"></ion-icon>
       </ion-card-content>
     </ion-card>
   </div>
 
+  <div *ngIf="items?.length === 0" class="flex flex-col justify-center items-center p-5">
+    <h1>No favorites found</h1>
+    <h6>Add favorites using the star icon</h6>
+    <ion-icon name="star-outline"></ion-icon>
+    <h6>... or pull down to refresh</h6>
+    <ion-icon name="arrow-down-outline"></ion-icon>
+  </div>
+
+
+
+
+
+
+
+
 
 </ion-content>
+
 
 <app-barfooter></app-barfooter>
