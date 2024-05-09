@@ -1,9 +1,20 @@
-<app-header></app-header>
+
+<!-- add a header to go back to the home page -->
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button default-href="#"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+
 
 <ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <div *ngIf="isLoadingBusiness" class="flex justify-center items-center p-5"><ion-spinner name="lines"></ion-spinner></div>
+  <div *ngIf="!isLoadingBusiness" class="ion-padding">
 
   <ion-card  >
     <ion-card-header>
@@ -25,7 +36,8 @@
   <app-products [products]="products"></app-products>
 
   <ion-button  class="p-5" color="orange" expand="block" (click)="favoriteAlert(business!.companyName)">Add to Favorites</ion-button>
-
+  </div>
 </ion-content>
+
 
 <app-barfooter></app-barfooter>

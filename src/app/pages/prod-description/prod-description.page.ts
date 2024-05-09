@@ -22,6 +22,7 @@ export class ProdDescriptionPage implements OnInit {
     password: '',
     isCompany: false,
   }
+  isLoadingBusiness: boolean = true;
 
   constructor(
     private route:ActivatedRoute,
@@ -50,7 +51,10 @@ export class ProdDescriptionPage implements OnInit {
     this.service.getProductByName(this.nameParam).then((data)=>{
       this.products = data as Products[];
       console.log('Products:', this.products);
+      this.isLoadingBusiness = false;
     });
+
+
   }
 
   whatsapp(contact: number | undefined) {
