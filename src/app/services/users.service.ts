@@ -131,7 +131,8 @@ export class UsersService {
         companyName: user.companyName,
         email: user.email,
         password: user.password,
-        isCompany: user.isCompany
+        isCompany: user.isCompany,
+        image: user.image
       });
 
       // Optional: Log success message

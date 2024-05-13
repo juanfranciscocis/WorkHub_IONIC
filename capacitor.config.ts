@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https',
-    url:'http://localhost:4200', //for local debugging
+    //url:'http://localhost:4200', //for local debugging
   }
 };
 
