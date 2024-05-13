@@ -136,6 +136,10 @@ export class UsersService {
 
       // Optional: Log success message
       console.log('User updated successfully:', user);
+      //clear the local storage
+      localStorage.removeItem('currentUser');
+      //save the user in the local storage
+      localStorage.setItem('currentUser', JSON.stringify(user));
 
       // Return true indicating successful update
       return true;

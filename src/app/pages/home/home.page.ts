@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
     email: '',
     password: '',
     isCompany: false,
+    image: ''
   }
 
   constructor(

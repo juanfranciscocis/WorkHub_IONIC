@@ -26,6 +26,11 @@
           </ion-card-header>
         </ion-card>
       </ion-col>
+    </ion-row >
+    <ion-row class="ion-justify-content-center ion-text-center" *ngIf="!searchedBusiness || searchedBusiness.length === 0">
+      <div class="flex justify-center items-center p-5">
+        <h1>No items to show</h1>
+      </div>
     </ion-row>
   </ion-grid>
 

@@ -22,8 +22,8 @@
         {{item.description}}
       </ion-card-content>
       </div>
-      <ion-card-content color="orange" class="flex   justify-center">
-        <ion-icon name="star-outline" (click)="favoriteAlert(item.companyName)"></ion-icon>
+      <ion-card-content color="orange" class="flex   justify-center" (click)="favoriteAlert(item.companyName)">
+        <ion-icon name="star-outline" class="big-icon" ></ion-icon>
       </ion-card-content>
     </ion-card>
   </div>

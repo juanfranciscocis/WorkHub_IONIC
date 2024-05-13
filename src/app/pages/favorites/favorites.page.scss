@@ -1,0 +1,25 @@
+.centered-image {
+  width: 20em;
+  height: 20em;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+ion-card-title {
+  --color: white;
+}
+
+ion-card-subtitle {
+  --color: orange;
+}
+
+.big-icon {
+  font-size: 2em; /* Adjust size as needed */
+}
+
+

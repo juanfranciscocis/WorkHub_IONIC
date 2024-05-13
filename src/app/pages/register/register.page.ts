@@ -39,7 +39,8 @@ export class RegisterPage implements OnInit {
       companyName: this.username,
       email: this.email,
       password: this.password,
-      isCompany: this.isCompany
+      isCompany: this.isCompany,
+      image: ''
     }
 
     let createUser: boolean = await this.usersService.createUser(this.user);
